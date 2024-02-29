@@ -1,6 +1,6 @@
 import tkinter,ttg
 
-class tabela(tkinter.Tk):
+class Calculadora_Logica(tkinter.Tk):
     entradas = []
     expressao = ""
     
@@ -10,7 +10,7 @@ class tabela(tkinter.Tk):
         self.title("tabela")
         self.display_texto = tkinter.StringVar()
         self.display_texto.set("")
-        
+    
         display = tkinter.Label(self,textvariable=self.display_texto)
         display.pack()
         
@@ -31,6 +31,8 @@ class tabela(tkinter.Tk):
         parenteses_fechado_btn.pack()
         resultado_btn = tkinter.Button(self,text="=",command=self.resultado)
         resultado_btn.pack()
+        apagar_btn = tkinter.Button(self,text="CE",command=self.apagar)
+        apagar_btn.pack()
     
     def letra_A(self):
         self.display_texto.set(self.display_texto.get() + "A")
@@ -57,6 +59,12 @@ class tabela(tkinter.Tk):
     def parenteses_fechado(self):
         self.display_texto.set(self.display_texto.get() + ")")
         self.expressao += ")"
+    
+    def apagar(self):
+        self.entradas = []
+        self.expressao = ""
+        self.display_texto.set("")
+        
 
     def resultado(self):
         self.entradas = list(set(self.entradas))
@@ -67,5 +75,6 @@ class tabela(tkinter.Tk):
         except:
             print('jshgfjshgdf')
 
-fds = tabela()
-fds.mainloop()
+
+calculadora = Calculadora_Logica()
+calculadora.mainloop()
