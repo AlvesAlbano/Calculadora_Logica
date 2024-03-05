@@ -1,4 +1,4 @@
-import tkinter,ttg,pandas
+import tkinter,ttg
 
 class Calculadora_Logica(tkinter.Tk):
     entradas = []
@@ -128,8 +128,7 @@ class Calculadora_Logica(tkinter.Tk):
 
     def resultado(self):
         self.entradas = list(set(self.entradas))
-        # entradas_aux = self.dentro_do_parenteses(self.expressao)
-        print(self.expressao, self.entradas) #'p and q and r', 'p or q or r', '(p or (~q)) => r'
+        print(self.expressao, self.entradas)
         try:
             tabela_verdade = ttg.Truths(self.entradas, [self.expressao], ints=False)
             self.display_resultado.set(f'{str(tabela_verdade)} \n {self.display_texto.get()} é uma {self.traducao(tabela_verdade.valuation())}')
