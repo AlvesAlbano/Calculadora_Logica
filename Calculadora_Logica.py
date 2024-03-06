@@ -91,26 +91,6 @@ class Calculadora_Logica(tkinter.Tk):
     def parenteses_fechado(self):
         self.display_texto.set(self.display_texto.get() + ")")
         self.expressao += ")"
-
-    def dentro_do_parenteses(self,entrada):
-        expressoes_parenteses = []
-        contador = 0
-        temp = ""
-        for char in entrada:
-            if char == '(':
-                contador += 1
-                if contador > 1:
-                    temp += char
-            elif char == ')':
-                contador -= 1
-                if contador == 0:
-                    expressoes_parenteses.append(temp)
-                    temp = ""
-                else:
-                    temp += char
-            elif contador > 0:
-                temp += char
-        return expressoes_parenteses
     
     def limpar(self):
         self.entradas = []
